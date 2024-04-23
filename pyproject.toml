@@ -1,0 +1,15 @@
+[tool.poetry]
+name = "flighthouse"
+version = "0.1.0"
+description = ""
+authors = ["Adrian del Ser <adrian.delser@gmail.com>"]
+readme = "README.md"
+
+[tool.poetry.dependencies]
+python = "^3.11"
+matplotlib = "^3.8.4"
+
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
