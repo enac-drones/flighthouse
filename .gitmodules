@@ -1,0 +1,3 @@
+[submodule "scenebuilder"]
+	path = scenebuilder
+	url = git@github.com:enac-drones/scenebuilder.git
