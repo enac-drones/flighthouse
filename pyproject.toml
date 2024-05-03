@@ -10,6 +10,7 @@ python = "^3.11"
 matplotlib = "^3.8.4"
 numpy = "^1.26.4"
 scipy = "^1.13.0"
+pandas = "^2.2.2"
 
 
 [build-system]
