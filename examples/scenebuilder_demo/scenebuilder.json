@@ -1,0 +1,1014 @@
+{
+    "default": {
+        "buildings": [
+            {
+                "ID": "Building 0",
+                "vertices": [
+                    [
+                        0.293892,
+                        -0.404508,
+                        1.2
+                    ],
+                    [
+                        -0.293892,
+                        -0.404508,
+                        1.2
+                    ],
+                    [
+                        -0.475528,
+                        0.154508,
+                        1.2
+                    ],
+                    [
+                        0.0,
+                        0.5,
+                        1.2
+                    ],
+                    [
+                        0.475528,
+                        0.154508,
+                        1.2
+                    ]
+                ]
+            }
+        ],
+        "vehicles": [
+            {
+                "ID": "V1",
+                "position": [
+                    -3.0,
+                    0.0001,
+                    0.5
+                ],
+                "goal": [
+                    3.0,
+                    0.0,
+                    0.5
+                ],
+                "source_strength": 0.5,
+                "imag_source_strength": 0.5,
+                "sink_strength": 5,
+                "safety": 0.0001
+            }
+        ]
+    },
+    "example1": {
+        "buildings": [
+            {
+                "ID": "Building 0",
+                "vertices": [
+                    [
+                        1.056451,
+                        -1.306451,
+                        1.2
+                    ],
+                    [
+                        0.354838,
+                        -0.330645,
+                        1.2
+                    ],
+                    [
+                        0.016129,
+                        0.524193,
+                        1.2
+                    ],
+                    [
+                        -1.266129,
+                        0.475806,
+                        1.2
+                    ],
+                    [
+                        -1.346774,
+                        -1.008064,
+                        1.2
+                    ],
+                    [
+                        0.508064,
+                        -1.862903,
+                        1.2
+                    ]
+                ]
+            }
+        ],
+        "vehicles": [
+            {
+                "ID": "V0",
+                "position": [
+                    -3.8709677419354844,
+                    -0.9274193548387091,
+                    0.5
+                ],
+                "goal": [
+                    3.209677419354838,
+                    1.709677419354838,
+                    0.5
+                ],
+                "source_strength": 1,
+                "imag_source_strength": 0.5,
+                "sink_strength": 5,
+                "safety": null
+            },
+            {
+                "ID": "V1",
+                "position": [
+                    2.943548387096774,
+                    -3.6854838709677415,
+                    0.5
+                ],
+                "goal": [
+                    -0.2258064516129039,
+                    2.25,
+                    0.5
+                ],
+                "source_strength": 1,
+                "imag_source_strength": 0.5,
+                "sink_strength": 5,
+                "safety": null
+            },
+            {
+                "ID": "V2",
+                "position": [
+                    -2.322580645161291,
+                    -1.435483870967742,
+                    0.5
+                ],
+                "goal": [
+                    1.524193548387096,
+                    2.935483870967742,
+                    0.5
+                ],
+                "source_strength": 1,
+                "imag_source_strength": 0.5,
+                "sink_strength": 5,
+                "safety": null
+            },
+            {
+                "ID": "V3",
+                "position": [
+                    -3.0967741935483875,
+                    3.161290322580646,
+                    0.5
+                ],
+                "goal": [
+                    0.7419354838709671,
+                    -2.6129032258064515,
+                    0.5
+                ],
+                "source_strength": 1,
+                "imag_source_strength": 0.5,
+                "sink_strength": 5,
+                "safety": null
+            },
+            {
+                "ID": "V4",
+                "position": [
+                    -2.669354838709678,
+                    -3.2741935483870965,
+                    0.5
+                ],
+                "goal": [
+                    -1.612903225806452,
+                    3.661290322580646,
+                    0.5
+                ],
+                "source_strength": 1,
+                "imag_source_strength": 0.5,
+                "sink_strength": 5,
+                "safety": null
+            },
+            {
+                "ID": "V5",
+                "position": [
+                    3.903225806451612,
+                    3.137096774193548,
+                    0.5
+                ],
+                "goal": [
+                    -2.951612903225807,
+                    3.814516129032258,
+                    0.5
+                ],
+                "source_strength": 1,
+                "imag_source_strength": 0.5,
+                "sink_strength": 5,
+                "safety": null
+            },
+            {
+                "ID": "V6",
+                "position": [
+                    -3.395161290322581,
+                    0.5,
+                    0.5
+                ],
+                "goal": [
+                    -1.790322580645162,
+                    -2.82258064516129,
+                    0.5
+                ],
+                "source_strength": 1,
+                "imag_source_strength": 0.5,
+                "sink_strength": 5,
+                "safety": null
+            },
+            {
+                "ID": "V7",
+                "position": [
+                    -4.258064516129032,
+                    -3.1854838709677415,
+                    0.5
+                ],
+                "goal": [
+                    3.556451612903226,
+                    -1.612903225806451,
+                    0.5
+                ],
+                "source_strength": 1,
+                "imag_source_strength": 0.5,
+                "sink_strength": 5,
+                "safety": null
+            },
+            {
+                "ID": "V8",
+                "position": [
+                    2.169354838709676,
+                    -4.588709677419354,
+                    0.5
+                ],
+                "goal": [
+                    3.96774193548387,
+                    -0.032258064516129004,
+                    0.5
+                ],
+                "source_strength": 1,
+                "imag_source_strength": 0.5,
+                "sink_strength": 5,
+                "safety": null
+            },
+            {
+                "ID": "V9",
+                "position": [
+                    2.306451612903226,
+                    -0.04032258064516103,
+                    0.5
+                ],
+                "goal": [
+                    -3.67741935483871,
+                    2.766129032258064,
+                    0.5
+                ],
+                "source_strength": 1,
+                "imag_source_strength": 0.5,
+                "sink_strength": 5,
+                "safety": null
+            },
+            {
+                "ID": "V10",
+                "position": [
+                    -3.951612903225807,
+                    -2.338709677419355,
+                    0.5
+                ],
+                "goal": [
+                    4.088709677419354,
+                    0.814516129032258,
+                    0.5
+                ],
+                "source_strength": 1,
+                "imag_source_strength": 0.5,
+                "sink_strength": 5,
+                "safety": null
+            },
+            {
+                "ID": "V11",
+                "position": [
+                    -0.17741935483870996,
+                    -4.379032258064516,
+                    0.5
+                ],
+                "goal": [
+                    -3.0967741935483875,
+                    -2.427419354838709,
+                    0.5
+                ],
+                "source_strength": 1,
+                "imag_source_strength": 0.5,
+                "sink_strength": 5,
+                "safety": null
+            }
+        ]
+    },
+    "implosion": {
+        "buildings": [
+            {
+                "ID": "Building 0",
+                "vertices": [
+                    [
+                        -3.2832,
+                        3.440692,
+                        1.2
+                    ],
+                    [
+                        -3.985527,
+                        3.362656,
+                        1.2
+                    ],
+                    [
+                        -3.964245,
+                        -3.99404,
+                        1.2
+                    ],
+                    [
+                        -3.311577,
+                        -4.050794,
+                        1.2
+                    ]
+                ]
+            },
+            {
+                "ID": "Building 1",
+                "vertices": [
+                    [
+                        3.470488,
+                        -3.334279,
+                        1.2
+                    ],
+                    [
+                        -3.254824,
+                        -3.50454,
+                        1.2
+                    ],
+                    [
+                        -3.269012,
+                        -4.001135,
+                        1.2
+                    ],
+                    [
+                        3.484676,
+                        -4.022417,
+                        1.2
+                    ]
+                ]
+            },
+            {
+                "ID": "Building 2",
+                "vertices": [
+                    [
+                        3.598183,
+                        3.688989,
+                        1.2
+                    ],
+                    [
+                        3.030646,
+                        3.646424,
+                        1.2
+                    ],
+                    [
+                        3.016458,
+                        -3.32009,
+                        1.2
+                    ],
+                    [
+                        3.399545,
+                        -3.32009,
+                        1.2
+                    ]
+                ]
+            },
+            {
+                "ID": "Building 3",
+                "vertices": [
+                    [
+                        3.257661,
+                        3.653518,
+                        1.2
+                    ],
+                    [
+                        3.186719,
+                        4.391316,
+                        1.2
+                    ],
+                    [
+                        -3.666288,
+                        4.064982,
+                        1.2
+                    ],
+                    [
+                        -3.666288,
+                        3.469069,
+                        1.2
+                    ]
+                ]
+            }
+        ],
+        "vehicles": [
+            {
+                "ID": "V0",
+                "position": [
+                    -2.708569807037458,
+                    1.1066969353007954,
+                    0.5
+                ],
+                "goal": [
+                    1.810442678774118,
+                    -0.8513053348467645,
+                    0.5
+                ],
+                "source_strength": 1,
+                "imag_source_strength": 0.5,
+                "sink_strength": 5,
+                "safety": null
+            },
+            {
+                "ID": "V1",
+                "position": [
+                    -2.183598183881953,
+                    2.0147559591373447,
+                    0.5
+                ],
+                "goal": [
+                    1.4628263337116891,
+                    -1.5394438138478996,
+                    0.5
+                ],
+                "source_strength": 1,
+                "imag_source_strength": 0.5,
+                "sink_strength": 5,
+                "safety": null
+            },
+            {
+                "ID": "V2",
+                "position": [
+                    -1.105278093076052,
+                    2.5397275822928496,
+                    0.5
+                ],
+                "goal": [
+                    0.6540862656072619,
+                    -2.19211123723042,
+                    0.5
+                ],
+                "source_strength": 1,
+                "imag_source_strength": 0.5,
+                "sink_strength": 5,
+                "safety": null
+            },
+            {
+                "ID": "V3",
+                "position": [
+                    -0.11208853575482536,
+                    2.610669693530081,
+                    0.5
+                ],
+                "goal": [
+                    -0.3178206583427947,
+                    -2.26305334846765,
+                    0.5
+                ],
+                "source_strength": 1,
+                "imag_source_strength": 0.5,
+                "sink_strength": 5,
+                "safety": null
+            },
+            {
+                "ID": "V4",
+                "position": [
+                    0.8456299659477846,
+                    2.4829738933030647,
+                    0.5
+                ],
+                "goal": [
+                    -1.3181044267877429,
+                    -2.0644154370034045,
+                    0.5
+                ],
+                "source_strength": 1,
+                "imag_source_strength": 0.5,
+                "sink_strength": 5,
+                "safety": null
+            },
+            {
+                "ID": "V5",
+                "position": [
+                    1.6827468785471034,
+                    1.9792849035187299,
+                    0.5
+                ],
+                "goal": [
+                    -2.17650397275823,
+                    -1.4543132803632233,
+                    0.5
+                ],
+                "source_strength": 1,
+                "imag_source_strength": 0.5,
+                "sink_strength": 5,
+                "safety": null
+            },
+            {
+                "ID": "V6",
+                "position": [
+                    2.0729284903518703,
+                    1.1918274687854717,
+                    0.5
+                ],
+                "goal": [
+                    -2.5595913734392752,
+                    -0.6668558456299651,
+                    0.5
+                ],
+                "source_strength": 1,
+                "imag_source_strength": 0.5,
+                "sink_strength": 5,
+                "safety": null
+            },
+            {
+                "ID": "V7",
+                "position": [
+                    2.051645856980702,
+                    0.08513053348467725,
+                    0.5
+                ],
+                "goal": [
+                    -2.7227582292849046,
+                    0.19863791146424603,
+                    0.5
+                ],
+                "source_strength": 1,
+                "imag_source_strength": 0.5,
+                "sink_strength": 5,
+                "safety": null
+            },
+            {
+                "ID": "V8",
+                "position": [
+                    1.9665153234960258,
+                    -0.9506242905788875,
+                    0.5
+                ],
+                "goal": [
+                    -2.850454029511919,
+                    1.1918274687854717,
+                    0.5
+                ],
+                "source_strength": 1,
+                "imag_source_strength": 0.5,
+                "sink_strength": 5,
+                "safety": null
+            },
+            {
+                "ID": "V9",
+                "position": [
+                    1.618898978433597,
+                    -1.7167990919409757,
+                    0.5
+                ],
+                "goal": [
+                    -2.2900113507377995,
+                    2.135357548240636,
+                    0.5
+                ],
+                "source_strength": 1,
+                "imag_source_strength": 0.5,
+                "sink_strength": 5,
+                "safety": null
+            },
+            {
+                "ID": "V10",
+                "position": [
+                    0.7321225879682167,
+                    -2.376560726447219,
+                    0.5
+                ],
+                "goal": [
+                    -1.1691259931895583,
+                    2.6958002270147574,
+                    0.5
+                ],
+                "source_strength": 1,
+                "imag_source_strength": 0.5,
+                "sink_strength": 5,
+                "safety": null
+            },
+            {
+                "ID": "V11",
+                "position": [
+                    -0.32491486946651627,
+                    -2.42622020431328,
+                    0.5
+                ],
+                "goal": [
+                    -0.11918274687854868,
+                    2.8164018161180486,
+                    0.5
+                ],
+                "source_strength": 1,
+                "imag_source_strength": 0.5,
+                "sink_strength": 5,
+                "safety": null
+            },
+            {
+                "ID": "V12",
+                "position": [
+                    -1.3890465380249726,
+                    -2.2275822928490348,
+                    0.5
+                ],
+                "goal": [
+                    0.9094778660612928,
+                    2.6816118047673108,
+                    0.5
+                ],
+                "source_strength": 1,
+                "imag_source_strength": 0.5,
+                "sink_strength": 5,
+                "safety": null
+            },
+            {
+                "ID": "V13",
+                "position": [
+                    -2.297105561861523,
+                    -1.5323496027241763,
+                    0.5
+                ],
+                "goal": [
+                    1.8246311010215646,
+                    2.0715096481271296,
+                    0.5
+                ],
+                "source_strength": 1,
+                "imag_source_strength": 0.5,
+                "sink_strength": 5,
+                "safety": null
+            },
+            {
+                "ID": "V14",
+                "position": [
+                    -2.7227582292849046,
+                    -0.7165153234960266,
+                    0.5
+                ],
+                "goal": [
+                    2.221906923950055,
+                    1.2414869466515333,
+                    0.5
+                ],
+                "source_strength": 1,
+                "imag_source_strength": 0.5,
+                "sink_strength": 5,
+                "safety": null
+            },
+            {
+                "ID": "V15",
+                "position": [
+                    -2.8930192962542574,
+                    0.21992054483541512,
+                    0.5
+                ],
+                "goal": [
+                    2.2502837684449464,
+                    0.0709421112372306,
+                    0.5
+                ],
+                "source_strength": 1,
+                "imag_source_strength": 0.5,
+                "sink_strength": 5,
+                "safety": null
+            }
+        ]
+    },
+    "bug_stuck": {
+        "buildings": [
+            {
+                "ID": "Building 0",
+                "vertices": [
+                    [
+                        -1.467741,
+                        -3.491935,
+                        1.2
+                    ],
+                    [
+                        -0.459677,
+                        -0.782258,
+                        1.2
+                    ],
+                    [
+                        -3.137096,
+                        -2.330645,
+                        1.2
+                    ],
+                    [
+                        -3.137096,
+                        -3.999999,
+                        1.2
+                    ]
+                ]
+            }
+        ],
+        "vehicles": [
+            {
+                "ID": "V0",
+                "position": [
+                    -2.483870967741936,
+                    0.10483870967741993,
+                    0.5
+                ],
+                "goal": [
+                    2.451612903225806,
+                    0.19354838709677402,
+                    0.5
+                ],
+                "source_strength": 1,
+                "imag_source_strength": 0.5,
+                "sink_strength": 5,
+                "safety": null
+            },
+            {
+                "ID": "V1",
+                "position": [
+                    -2.709677419354839,
+                    1.080645161290323,
+                    0.5
+                ],
+                "goal": [
+                    2.475806451612902,
+                    0.5,
+                    0.5
+                ],
+                "source_strength": 1,
+                "imag_source_strength": 0.5,
+                "sink_strength": 5,
+                "safety": null
+            },
+            {
+                "ID": "V2",
+                "position": [
+                    -2.645161290322581,
+                    1.806451612903226,
+                    0.5
+                ],
+                "goal": [
+                    2.370967741935484,
+                    -0.29032258064516103,
+                    0.5
+                ],
+                "source_strength": 1,
+                "imag_source_strength": 0.5,
+                "sink_strength": 5,
+                "safety": null
+            },
+            {
+                "ID": "V3",
+                "position": [
+                    2.346774193548386,
+                    1.685483870967742,
+                    0.5
+                ],
+                "goal": [
+                    -1.370967741935484,
+                    -0.725806451612903,
+                    0.5
+                ],
+                "source_strength": 1,
+                "imag_source_strength": 0.5,
+                "sink_strength": 5,
+                "safety": null
+            },
+            {
+                "ID": "V4",
+                "position": [
+                    -1.233870967741936,
+                    -0.8629032258064511,
+                    0.5
+                ],
+                "goal": [
+                    2.04032258064516,
+                    2.088709677419356,
+                    0.5
+                ],
+                "source_strength": 1,
+                "imag_source_strength": 0.5,
+                "sink_strength": 5,
+                "safety": null
+            },
+            {
+                "ID": "V5",
+                "position": [
+                    1.137096774193548,
+                    2.209677419354838,
+                    0.5
+                ],
+                "goal": [
+                    0.637096774193548,
+                    -0.669354838709677,
+                    0.5
+                ],
+                "source_strength": 1,
+                "imag_source_strength": 0.5,
+                "sink_strength": 5,
+                "safety": null
+            },
+            {
+                "ID": "V6",
+                "position": [
+                    0.5322580645161281,
+                    -1.209677419354838,
+                    0.5
+                ],
+                "goal": [
+                    0.6129032258064511,
+                    2.67741935483871,
+                    0.5
+                ],
+                "source_strength": 1,
+                "imag_source_strength": 0.5,
+                "sink_strength": 5,
+                "safety": null
+            },
+            {
+                "ID": "V7",
+                "position": [
+                    -1.088709677419355,
+                    3.524193548387096,
+                    0.5
+                ],
+                "goal": [
+                    0.854838709677419,
+                    -3.943548387096774,
+                    0.5
+                ],
+                "source_strength": 1,
+                "imag_source_strength": 0.5,
+                "sink_strength": 5,
+                "safety": null
+            },
+            {
+                "ID": "V8",
+                "position": [
+                    0.669354838709677,
+                    -3.911290322580645,
+                    0.5
+                ],
+                "goal": [
+                    -0.08870967741935498,
+                    3.75,
+                    0.5
+                ],
+                "source_strength": 1,
+                "imag_source_strength": 0.5,
+                "sink_strength": 5,
+                "safety": null
+            },
+            {
+                "ID": "V9",
+                "position": [
+                    -2.451612903225807,
+                    -0.693548387096774,
+                    0.5
+                ],
+                "goal": [
+                    1.580645161290322,
+                    -2.048387096774193,
+                    0.5
+                ],
+                "source_strength": 1,
+                "imag_source_strength": 0.5,
+                "sink_strength": 5,
+                "safety": null
+            },
+            {
+                "ID": "V10",
+                "position": [
+                    1.008064516129032,
+                    -2.4596774193548385,
+                    0.5
+                ],
+                "goal": [
+                    -2.129032258064517,
+                    -0.508064516129032,
+                    0.5
+                ],
+                "source_strength": 1,
+                "imag_source_strength": 0.5,
+                "sink_strength": 5,
+                "safety": null
+            }
+        ]
+    },
+    "long_building": {
+        "buildings": [
+            {
+                "ID": "Building 0",
+                "vertices": [
+                    [
+                        0.5,
+                        3.0,
+                        1.2
+                    ],
+                    [
+                        -0.5,
+                        3,
+                        1.2
+                    ],
+                    [
+                        -0.5,
+                        -3.0,
+                        1.2
+                    ],
+                    [
+                        0.5,
+                        -3.0,
+                        1.2
+                    ]
+                ]
+            }
+        ],
+        "vehicles": [
+            {
+                "ID": "V0",
+                "position": [
+                    -4,
+                    0.3,
+                    0.5
+                ],
+                "goal": [
+                    4,
+                    -0.0,
+                    0.5
+                ],
+                "source_strength": 1,
+                "imag_source_strength": 0.5,
+                "sink_strength": 5,
+                "safety": null
+            }
+        ]
+    },
+    "my_case": {
+        "buildings": [],
+        "vehicles": [
+            {
+                "ID": "V0",
+                "position": [
+                    -1.0000000000000009,
+                    2.0,
+                    0.5
+                ],
+                "goal": [
+                    2.96774193548387,
+                    2.024193548387096,
+                    0.5
+                ],
+                "source_strength": 1,
+                "imag_source_strength": 0.5,
+                "sink_strength": 5,
+                "safety": null
+            }
+        ]
+    },
+    "Test Case": {
+        "buildings": [
+            {
+                "ID": "Building 0",
+                "vertices": [
+                    [
+                        0.209677,
+                        0.959677,
+                        1.2
+                    ],
+                    [
+                        -1.943548,
+                        0.919354,
+                        1.2
+                    ],
+                    [
+                        -1.959677,
+                        -0.604838,
+                        1.2
+                    ],
+                    [
+                        0.201612,
+                        -0.620967,
+                        1.2
+                    ]
+                ]
+            }
+        ],
+        "vehicles": [
+            {
+                "ID": "V0",
+                "position": [
+                    -3.92741935483871,
+                    0.16129032258064502,
+                    0.5
+                ],
+                "goal": [
+                    3.32258064516129,
+                    0.20161290322580694,
+                    0.5
+                ],
+                "source_strength": 1,
+                "imag_source_strength": 0.5,
+                "sink_strength": 5,
+                "safety": null
+            }
+        ]
+    }
+}
