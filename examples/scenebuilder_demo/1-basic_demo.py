@@ -1,3 +1,6 @@
+#import the SceneBuilder class
 from scenebuilder import SceneBuilder
-plot = SceneBuilder()
-plot.draw_scene()
+#Create an instance of User Interface
+gui = SceneBuilder()
+#Open the GUI
+gui.draw_scene()
