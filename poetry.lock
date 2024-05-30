@@ -519,6 +519,21 @@ typing = ["typing-extensions"]
 xmp = ["defusedxml"]
 
 [[package]]
+name = "plotly"
+version = "5.22.0"
+description = "An open-source, interactive data visualization library for Python"
+optional = false
+python-versions = ">=3.8"
+files = [
+    {file = "plotly-5.22.0-py3-none-any.whl", hash = "sha256:68fc1901f098daeb233cc3dd44ec9dc31fb3ca4f4e53189344199c43496ed006"},
+    {file = "plotly-5.22.0.tar.gz", hash = "sha256:859fdadbd86b5770ae2466e542b761b247d1c6b49daed765b95bb8c7063e7469"},
+]
+
+[package.dependencies]
+packaging = "*"
+tenacity = ">=6.2.0"
+
+[[package]]
 name = "pyparsing"
 version = "3.1.2"
 description = "pyparsing module - Classes and methods to define and execute parsing grammars"
@@ -559,13 +574,13 @@ files = [
 
 [[package]]
 name = "scenebuilder"
-version = "0.2.0"
+version = "0.2.3"
 description = "A simple GUI to create 2D scenes with obstacles and drone paths for multi-agent path planning algorithms"
 optional = false
-python-versions = ">=3.11"
+python-versions = ">=3.10"
 files = [
-    {file = "scenebuilder-0.2.0-py3-none-any.whl", hash = "sha256:6666a588f9600f58de49f9764a09e7b9ee5218704d1518c76446d6d40ad0f5b3"},
-    {file = "scenebuilder-0.2.0.tar.gz", hash = "sha256:f559755e11e16f6f1c50dc2ade09ab239b0775ec5d0098699093bef2828aa2c4"},
+    {file = "scenebuilder-0.2.3-py3-none-any.whl", hash = "sha256:ad2115445d4938b2afbaddd9ae272f991d9d861fa59e3e8b2d2e161b62d303a5"},
+    {file = "scenebuilder-0.2.3.tar.gz", hash = "sha256:00cf91ac12e36623d82fba06fad134338dd3303413400ffa3a04fd3b55c5aa14"},
 ]
 
 [package.dependencies]
@@ -626,6 +641,21 @@ files = [
 ]
 
 [[package]]
+name = "tenacity"
+version = "8.3.0"
+description = "Retry code until it succeeds"
+optional = false
+python-versions = ">=3.8"
+files = [
+    {file = "tenacity-8.3.0-py3-none-any.whl", hash = "sha256:3649f6443dbc0d9b01b9d8020a9c4ec7a1ff5f6f3c6c8a036ef371f573fe9185"},
+    {file = "tenacity-8.3.0.tar.gz", hash = "sha256:953d4e6ad24357bceffbc9707bc74349aca9d245f68eb65419cf0c249a1949a2"},
+]
+
+[package.extras]
+doc = ["reno", "sphinx"]
+test = ["pytest", "tornado (>=4.5)", "typeguard"]
+
+[[package]]
 name = "tzdata"
 version = "2024.1"
 description = "Provider of IANA time zone data"
@@ -639,4 +669,4 @@ files = [
 [metadata]
 lock-version = "2.0"
 python-versions = "^3.11"
-content-hash = "2efcac2f8d9a8def1dc6aa6663b870230ff5bce8cedadf3d7cee86c8f79c5dcd"
+content-hash = "20460d1dceba9bb32db4dba95d196346c004c16fbe1e8be3711cfc7d70e127fb"

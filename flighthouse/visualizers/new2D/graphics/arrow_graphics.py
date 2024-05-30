@@ -87,11 +87,11 @@ class ArrowPlotter:
 
         """
         for idx, arrow in enumerate(self.arrows):
-            arrow_patch = ArrowPatch(arrow)
-            self.arrow_patches[idx] = arrow_patch
-            arrow_patch.create_patch()  # Initialize patches
-            ax.add_artist(arrow_patch.get_patch())
-            # ax.add_line(point_patch)
+            if arrow:
+                arrow_patch = ArrowPatch(arrow)
+                self.arrow_patches[idx] = arrow_patch
+                arrow_patch.create_patch()  # Initialize patches
+                ax.add_artist(arrow_patch.get_patch())
 
     def set_arrow_attributes(self, **kwargs):
         """
@@ -132,23 +132,23 @@ class ArrowPlotter:
             A list of ArrowEntity objects extracted from the desired_vectors dictionary elements.
         """
         vehicle_positions = []
-        # desired_vectors = []
         arrows: List[ArrowEntity] = []
         for vehicle in vehicle_data:
             vehicle_start = vehicle.get("path")[0][:2]
             vehicle_positions.append(np.array(vehicle_start))
-            # desired_direction_2d = vehicle.get("gflow")[0][:2]
-            self.desired_vectors.append(vehicle.get("desired_vectors"))
+            desired_vector_list = vehicle.get("desired_vectors")
+            self.desired_vectors.append(desired_vector_list)
             self.paths.append(vehicle.get("path"))
 
-        for idx, desired_vector in enumerate(self.desired_vectors):
-
-            arrow = ArrowEntity(
-                vehicle_positions[idx], vehicle_positions[idx] + desired_vector[0][:2]
-            )
+        for idx, desired_vector_list in enumerate(self.desired_vectors):
+            if desired_vector_list:
+                arrow = ArrowEntity(
+                    vehicle_positions[idx], vehicle_positions[idx] + desired_vector_list[0][:2]
+                )
+            else:
+                arrow=None
             arrows.append(arrow)
 
-        # self.desired_vectors = desired_vectors
         return arrows
 
     def animate_arrows(self, frame: int, total_frames: int):

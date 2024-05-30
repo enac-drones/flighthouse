@@ -50,7 +50,6 @@ class SimulationVisualizer(Observer):
             data: dict = json.load(file)
             self.buildings = data.get("buildings", [])
             self.vehicles = data.get("vehicles", [])
-            self.arrows = data.get("desired_vectors", [])
             self.full_data = data
 
     def setup(self, ax):

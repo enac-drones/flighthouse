@@ -2,16 +2,18 @@ import numpy as np
 import matplotlib.pyplot as plt
 from matplotlib.animation import FuncAnimation
 from mpl_toolkits.mplot3d.art3d import Poly3DCollection
-import threading
-import time
-from gflow.utils.json_utils import load_from_json
+from ...utils.json_utils import load_from_json
 
-def simulation_visualize3Dtrails(filename, history_length:int = 50):
+def visualise3D(filename:str, history_length:int = 50, show_sheets:bool = True, interval:float = 1):
     '''3D plot to visualise drone paths with trail'''
+    print(filename)
     output_data = load_from_json(filename)
     vehicles = output_data['vehicles']
     paths = [v['path'] for v in vehicles]
-    paths = [(np.array(path) + np.array([0, 0, 4])).tolist() for path in paths]
+    paths = [np.array(path).tolist() for path in paths]
+
+    buildings = output_data.get('buildings', [])
+
 
     # Initialize drones
     N = len(paths)  # Number of drones
@@ -23,12 +25,9 @@ def simulation_visualize3Dtrails(filename, history_length:int = 50):
     ax.set_xlim([-5, 5])
     ax.set_ylim([-5, 5])
     ax.set_zlim([0, 10])
-
-    # Hide all grids and axes
-    ax.grid(False)            # Turn off the grid
-    ax.set_xticks([])         # Remove x-axis ticks
-    ax.set_yticks([])         # Remove y-axis ticks
-    ax.set_zticks([])         # Remove y-axis ticks
+    ax.set_xlabel('X')
+    ax.set_ylabel('Y')
+    ax.set_zlabel('Z')
 
     fig.set_size_inches(8, 8)
 
@@ -39,24 +38,26 @@ def simulation_visualize3Dtrails(filename, history_length:int = 50):
     colours = ['r', 'b', 'g', 'k', 'c']
     path_plots = [ax.plot([], [], [], f'{colours[_ % len(colours)]}-')[0] for _ in range(N)]
 
-    # Initialize one Poly3DCollection per drone for the surface
-    surface_collections = [Poly3DCollection([], alpha=0.25) for _ in range(N)]
-    for idx, poly in enumerate(surface_collections):
-        poly.set_facecolor(colours[idx % len(colours)])
-        ax.add_collection3d(poly)
-
-    # Assuming initialization of paths_history and surface_collections is done
+    if show_sheets:
+        # Initialize one Poly3DCollection per drone for the surface
+        surface_collections = [Poly3DCollection([], alpha=0.25) for _ in range(N)]
+        for idx, poly in enumerate(surface_collections):
+            poly.set_facecolor(colours[idx % len(colours)])
+            ax.add_collection3d(poly)
 
     # Initialize an external structure to manage vertices for each drone
-    # This will hold the current vertices for the visible segments of the path
     drone_path_vertices = [[] for _ in range(N)]
 
-    def update_stemlines_and_paths(paths_history):
+    def update_paths(paths_history):
         for idx, history in enumerate(paths_history):
             # Update path plot
             path_plots[idx].set_data(history[:, 0], history[:, 1])
             path_plots[idx].set_3d_properties(history[:, 2])
 
+
+    def update_stemlines(paths_history):
+        for idx, history in enumerate(paths_history):
+            #update the sheets
             if np.count_nonzero(~np.isnan(history[:, 0])) > 1:
                 # Get the index of the last valid point
                 valid_indices = np.where(~np.isnan(history[:, 0]))[0]
@@ -81,13 +82,25 @@ def simulation_visualize3Dtrails(filename, history_length:int = 50):
                     surface_collections[idx].set_verts(drone_path_vertices[idx])
 
     def update_positions(drones, paths_history):
-        nonlocal i
+        nonlocal i, drones_stopped
         for idx, path in enumerate(paths):
-            current_position = path[i % len(path)]
+            if i < len(path):
+                current_position = path[i]
+            else:
+                current_position = path[-1]
+                drones_stopped[idx] = True
             drones[idx, :3] = current_position
             # Update history
             paths_history[idx] = np.roll(paths_history[idx], -1, axis=0)
             paths_history[idx][-1, :] = current_position
+
+        if all(drones_stopped):
+            i = 0
+            drones_stopped = [False] * N
+            for idx in range(N):
+                paths_history[idx][:] = np.nan
+                drone_path_vertices[idx] = []
+
         i += 1
         return drones
 
@@ -96,12 +109,38 @@ def simulation_visualize3Dtrails(filename, history_length:int = 50):
         drones = update_positions(drones, paths_history)
         plot.set_data(drones[:, 0], drones[:, 1])
         plot.set_3d_properties(drones[:, 2])
-        update_stemlines_and_paths(paths_history)
+        update_paths(paths_history)
+        if show_sheets:
+            update_stemlines(paths_history)
+
         return plot,
 
-    i = 1
+    # Function to add buildings to the plot
+    def add_buildings(buildings):
+        for building in buildings:
+            vertices = np.array(building['vertices'])
+            base = vertices[:, :2].tolist()
+            height = vertices[0, 2]
+            base.append(base[0])  # Close the polygon
+
+            for i in range(len(base) - 1):
+                x = [base[i][0], base[i+1][0], base[i+1][0], base[i][0]]
+                y = [base[i][1], base[i+1][1], base[i+1][1], base[i][1]]
+                z = [0, 0, height, height]
+                verts = [list(zip(x, y, z))]
+                poly = Poly3DCollection(verts, alpha=0.7, edgecolor='k')
+                poly.set_facecolor('gray')
+                ax.add_collection3d(poly)
+
+    # Add buildings to the plot
+    add_buildings(buildings)
+
+    i = 0
+    drones_stopped = [False] * N
+
     # Creating animation
-    ani = FuncAnimation(fig, update_plot, fargs=(plot, drones, paths_history), frames=None, interval=1, blit=False, cache_frame_data=False)
+    ani = FuncAnimation(fig, update_plot, fargs=(plot, drones, paths_history), frames=None, interval=interval, blit=False, cache_frame_data=False)
     plt.show()
 
-
+# Example usage:
+# plot_drone_paths('path/to/your/input_data.json')

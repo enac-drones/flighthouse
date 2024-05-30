@@ -1,41 +1,37 @@
 
 # Visualiser Demos
 
-Welcome to the Visualiser Demos! This directory contains three different visualisers to help you analyze drone flights. These visualisers allow you to see what drones did during their flights, providing valuable insights for analysis.
+Welcome to the Visualiser Demos! This directory contains three different visualisers to help you analyze drone flights. These visualisers allow you to see what drones did during their flights, acting as a useful tool to iterate on your path planning algorithms.
 
 ## Available Visualisers
 
-1. **2D Visualiser**: 
-   - This visualiser provides a simple 2D representation of the drone paths.
-   - It's ideal for quickly viewing and analyzing flight patterns on a 2D plane.
+1. **2D Visualiser with Slider**: 
+   - This visualiser provides a simple 2D representation of the drone paths, as if viewed from above. 
+   - The visualiser will ignore the $z$ coordinate (if it exists) of both buildings and drones.
+   - A slider is provided for detailed analysis of the trajectories
 
-2. **3D Visualiser with Dotted Lines**:
-   - This visualiser shows the drone paths in 3D space with dotted lines connecting each drone to the ground.
-   - It provides a clear visual representation of the drones' altitudes and movements in three dimensions.
+2. **3D Visualiser with Paths and Optional Semi-Transparent Sheets**:
+   - This visualiser shows an animation of the drone paths in 3D space with semi-transparent sheets extending from the path line to the ground.
+   - Rendering the sheets can be expensive, so the user can choose not to display them (the path line will remain visible)
+   - The user can change the time interval (in ms) between frames to slow down the animation
+   - The user can change the history length. This is how many past time steps to include in the animation.
 
-3. **3D Visualiser with Semi-Transparent Sheets**:
-   - This visualiser presents the drone paths in 3D space with semi-transparent sheets following behind each drone.
-   - It's useful for visualizing the trajectory and flow of each drone's path over time.
+3. **Real Time 3D Visualiser**:
+   - This uses threading to display drone positions in real time. TODO using pybullet DroneSim.
 
 ## JSON Files
 
-The visualisers use JSON files as input to plot the drone paths. You can choose between two types of JSON files:
+The visualisers use JSON files as input to plot the drone paths. These are identical for 2D or 3D plotting. The following JSON files are provided in the demos:
+- ***simulated_flight.json***: data from a flight simulated with our in-house PGFlow guidance algorithm and several obstacles.
+- ***real_flight.json*** data from a real flight flow in our drone arena. This contains evidence of communications issues with the drones, as they can be sometimes seen jumping to new positions after stopping for a short amounbt of time
 
-1. **2D Simulated Flight**:
-   - This file contains simulated flight data in 2D.
-   - Use this to see how the visualiser works with basic, simulated flight patterns.
-
-2. **3D Real Flight with Communication Gaps**:
-   - This file contains real flight data in 3D, including communication gaps where drones might suddenly jump positions.
-   - Use this to analyze real-world scenarios and understand how communication issues can affect drone flight paths.
 
 ## How to Run the Demos
 
-1. Place the appropriate JSON file in the same directory as the demo script.
+1. Ensure the JSON files are in the same directory as the demo scripts.
 2. Run the corresponding demo script to visualize the drone paths:
-   - For the 2D Visualiser: `python 2d_visualiser.py`
-   - For the 3D Visualiser with Dotted Lines: `python 3d_dotted_visualiser.py`
-   - For the 3D Visualiser with Semi-Transparent Sheets: `python 3d_sheets_visualiser.py`
+   - For the 2D Visualiser: `python3 demo2D.py`
+   - For the 3D Visualiser with Semi-Transparent Sheets: `python3 demo3D.py`
 
 Each script will load the JSON file, process the drone paths, and display the visualisation using Matplotlib.
 
