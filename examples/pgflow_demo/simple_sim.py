@@ -1,6 +1,6 @@
 from pgflow import Cases
 from pgflow import run_simulation, set_new_attribute
-from flighthouse import SimulationVisualizer
+from flighthouse import SimulationVisualizer, visualise3D
 from flighthouse import SceneBuilder
 
 
@@ -85,7 +85,13 @@ case.to_dict(file_path="pgflow_output.json")
 
 ############################  END OF PGFLOW  #################################################
 
+'''
+Now we feed the output of PGFlow into one of our visualisers
+'''
 
+file = 'pgflow_output.json'
 # visualisation
-visualizer = SimulationVisualizer('pgflow_output.json')
+visualizer = SimulationVisualizer(file)
 visualizer.show_plot()
+
+visualise3D(file)
