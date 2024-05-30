@@ -8,8 +8,14 @@ gui = SceneBuilder()
 dir_path = os.path.dirname(os.path.realpath(__file__))
 
 # Specify a JSON or GeoJSON file with a pre-existing scene
+# TODO uncomment one of the two lines below to pick a json or geojson file to load.
+
+file = "pentagon.json"
+# file = "pentagon.geojson"
+
+
 # Use os.path.join to construct the full path to the file
-scene_file = os.path.join(dir_path, 'scenebuilder.json')
+scene_file = os.path.join(dir_path, file)
 gui.load_scene(scene_file)
 
 # Uncomment the line below to set new limits

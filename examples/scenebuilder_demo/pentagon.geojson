@@ -1,0 +1,63 @@
+{
+    "type": "FeatureCollection",
+    "features": [
+        {
+            "type": "Feature",
+            "properties": {
+                "ID": "B0",
+                "type": "building"
+            },
+            "geometry": {
+                "type": "Polygon",
+                "coordinates": [
+                    [
+                        [
+                            0.293892,
+                            -0.404508
+                        ],
+                        [
+                            -0.293892,
+                            -0.404508
+                        ],
+                        [
+                            -0.475528,
+                            0.154508
+                        ],
+                        [
+                            0.0,
+                            0.5
+                        ],
+                        [
+                            0.475528,
+                            0.154508
+                        ],
+                        [
+                            0.293892,
+                            -0.404508
+                        ]
+                    ]
+                ]
+            }
+        },
+        {
+            "type": "Feature",
+            "properties": {
+                "ID": "V0",
+                "type": "vehicle"
+            },
+            "geometry": {
+                "type": "LineString",
+                "coordinates": [
+                    [
+                        -3.0,
+                        0.0001
+                    ],
+                    [
+                        3.0,
+                        0.0
+                    ]
+                ]
+            }
+        }
+    ]
+}
