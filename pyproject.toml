@@ -15,6 +15,7 @@ scipy = "^1.13.0"
 pandas = "^2.2.2"
 scenebuilder = "^0.2.0"
 plotly = "^5.22.0"
+pgflow = "^0.2.8"
 
 
 
