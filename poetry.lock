@@ -574,13 +574,13 @@ files = [
 
 [[package]]
 name = "scenebuilder"
-version = "0.2.3"
+version = "0.2.4"
 description = "A simple GUI to create 2D scenes with obstacles and drone paths for multi-agent path planning algorithms"
 optional = false
 python-versions = ">=3.10"
 files = [
-    {file = "scenebuilder-0.2.3-py3-none-any.whl", hash = "sha256:ad2115445d4938b2afbaddd9ae272f991d9d861fa59e3e8b2d2e161b62d303a5"},
-    {file = "scenebuilder-0.2.3.tar.gz", hash = "sha256:00cf91ac12e36623d82fba06fad134338dd3303413400ffa3a04fd3b55c5aa14"},
+    {file = "scenebuilder-0.2.4-py3-none-any.whl", hash = "sha256:3ade9c7e826ecc0a9012559e1cca51c76b4fd549c600fda7267ec565cd03cf5d"},
+    {file = "scenebuilder-0.2.4.tar.gz", hash = "sha256:02cc445686b4e7289151e2717b6c0a7277c8b0970930f0826438a4c625faed97"},
 ]
 
 [package.dependencies]

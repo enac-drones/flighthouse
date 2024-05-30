@@ -12,5 +12,8 @@ dir_path = os.path.dirname(os.path.realpath(__file__))
 scene_file = os.path.join(dir_path, 'scenebuilder.json')
 gui.load_scene(scene_file)
 
+# Uncomment the line below to set new limits
+# gui.set_lims((-10,10))
+
 # Open the GUI
 gui.draw_scene()

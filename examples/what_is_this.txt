@@ -1,5 +1,0 @@
-This will have examples to show flighthouse things
-eg
-- Scenebuilder example
-- how to visualise/ingest visualisation jsons
-- 
