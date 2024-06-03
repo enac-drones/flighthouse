@@ -14,35 +14,14 @@ from dronesim.envs.CtrlAviary import CtrlAviary
 from dronesim.utils.Logger import Logger
 from dronesim.utils.utils import str2bool, sync
 
-from PGFlow import Cases
-from PGFlow.arena import ArenaMap
-from PGFlow.utils.simulation_utils import step_simulation, set_new_attribute
+from pgflow import Cases
+from pgflow.arena import ArenaMap
+from pgflow.utils.simulation_utils import step_simulation, set_new_attribute
 
 
 # Create a PyBullet simulation environment
-p.connect(p.GUI)
+# p.connect(p.GUI)
 
-# Load polygons from the text file
-with open("./building_12.json", "r") as f:
-    # Load the JSON data
-    data = json.load(f)
-
-polygons = []
-obstacles = data["scenebuilder"]["buildings"]
-for id, obs in enumerate(obstacles): 
-    floor = np.array(obs["vertices"]).copy() 
-    floor[:,2] = 0.0
-    ceil = np.array(obs["vertices"]).copy() 
-    ceil[:,2] = 3.0
-    
-    tmp = np.vstack((floor, ceil))
-    print(tmp)
-    polygons.append(tmp)
-
-# Create polygons in the simulation
-for polygon_vertices in polygons:
-    polygon_id = p.createCollisionShape(p.GEOM_MESH, vertices=polygon_vertices)
-    p.createMultiBody(baseCollisionShapeIndex=polygon_id)
 
 
 ArenaMap.size = 0.1
@@ -205,6 +184,29 @@ if __name__ == "__main__":
 
     #### Obtain the PyBullet Client ID from the environment ####
     PYB_CLIENT = env.getPyBulletClient()
+
+    # Load polygons from the text file
+    with open("./building_12.json", "r") as f:
+        # Load the JSON data
+        data = json.load(f)
+
+    polygons = []
+    obstacles = data["scenebuilder"]["buildings"]
+    for id, obs in enumerate(obstacles): 
+        floor = np.array(obs["vertices"]).copy() 
+        floor[:,2] = 0.0
+        ceil = np.array(obs["vertices"]).copy() 
+        ceil[:,2] = 3.0
+        
+        tmp = np.vstack((floor, ceil))
+        print(tmp)
+        polygons.append(tmp)
+
+    # Create polygons in the simulation
+    for polygon_vertices in polygons:
+        polygon_id = p.createCollisionShape(p.GEOM_MESH, vertices=polygon_vertices)
+        p.createMultiBody(baseCollisionShapeIndex=polygon_id)
+
 
     #### Initialize the logger #################################
     logger = Logger(
