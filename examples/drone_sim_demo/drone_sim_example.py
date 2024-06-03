@@ -136,28 +136,12 @@ if __name__ == "__main__":
     H = 0.50
     H_STEP = 0.05
     R = 2
-    # INIT_XYZS = np.array(
-    #     [
-    #         [
-    #             R * np.cos((i / 6) * 2 * np.pi + np.pi / 2),
-    #             R * np.sin((i / 6) * 2 * np.pi + np.pi / 2) - R,
-    #             H + i * H_STEP,
-    #         ]
-    #         for i in range(ARGS.num_drones)
-    #     ]
-    # )
-    # INIT_RPYS = np.array(
-    #     [[0, 0, i * (np.pi / 20.0) / ARGS.num_drones] for i in range(ARGS.num_drones)]
-    # )
+
     AGGR_PHY_STEPS = (
         int(ARGS.simulation_freq_hz / ARGS.control_freq_hz) if ARGS.aggregate else 1
     )
 
-    # INIT_RPYS = np.array(
-    #     [[0, 0, 0 * i * (np.pi / 2) / ARGS.num_drones] for i in range(ARGS.num_drones)]
-    # )
-    # INIT_XYZS = np.array([[0.0, 0.0, 0.5]])
-
+    
     ## Hover ###
     # INIT_XYZS = np.array([[0.0, 0.0, 0.6]])
     INIT_XYZS = np.array([v.position for v in case.vehicle_list])
@@ -177,9 +161,6 @@ if __name__ == "__main__":
             R * np.sin((i / NUM_WP) * (4 * np.pi) + np.pi / 2) - R + INIT_XYZS[0, 1],
             0,
         )
-    # wp_counters = np.array(
-    #     [int((i * NUM_WP / 6) % NUM_WP) for i in range(ARGS.num_drones)]
-    # )
 
     TARGET_RPYS = np.zeros((NUM_WP, 3))
     for i in range(NUM_WP):
@@ -236,9 +217,7 @@ if __name__ == "__main__":
         if i % CTRL_EVERY_N_STEPS == 0:
             #### Compute control for the current way point #############
             for j in range(num_drones):
-                # print(f"{obs[str(j)]["state"]}")
-                # pos = obs[str(j)]["state"][:3]
-                # case.vehicle_list[j].position = pos
+
                 vehicle = case.vehicle_list[j]
                 if vehicle.state==1:
                     desired_vector = np.array([0,0,-1])
@@ -259,32 +238,7 @@ if __name__ == "__main__":
                     )
          
 
-        #### Camera View follows the vehicle #######################
-        # if i%(CTRL_EVERY_N_STEPS*1) == 0:
-        #     x,y,z, = obs[str(0)]["state"][0:3]
-        #     p.resetDebugVisualizerCamera(cameraDistance=2,
-        #                                  cameraYaw=-30,
-        #                                  cameraPitch=-30,
-        #                                  cameraTargetPosition=[x, y, z],
-        #                                  physicsClientId=PYB_CLIENT
-        #                                  )
-
-        #### Log the simulation ####################################
-        # for j in range(num_drones):
-        #     logger.log(
-        #         drone=j,
-        #         timestamp=i / env.SIM_FREQ,
-        #         state=obs[str(j)]["state"][:20],
-        #         control=np.hstack(
-        #             [
-        #                 TARGET_POS[wp_counters[j], 0:2],
-        #                 INIT_XYZS[j, 2],
-        #                 INIT_RPYS[j, :],
-        #                 np.zeros(6),
-        #             ]
-        #         )
-        #         # control=np.hstack([INIT_XYZS[j, :]+TARGET_POS[wp_counters[j], :], INIT_RPYS[j, :], np.zeros(6)])
-        #     )
+       
 
         #### Printout ##############################################
         if i % env.SIM_FREQ == 0:
