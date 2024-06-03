@@ -6,7 +6,7 @@ import os
 script_dir = os.path.dirname(os.path.abspath(__file__))
 
 # Construct the path to the JSON file
-json_file_path = os.path.join(script_dir, 'real_flight.json')
+json_file_path = os.path.join(script_dir, 'pybullet_output1.json')
 
 
 if __name__ == "__main__":

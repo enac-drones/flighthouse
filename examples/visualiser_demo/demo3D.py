@@ -7,9 +7,9 @@ script_dir = os.path.dirname(os.path.abspath(__file__))
 
 
 if __name__ == "__main__":
-    demo_file = 'real_flight.json'
+    demo_file = 'pybullet_output1.json'
     # Construct the path to the JSON file
-    json_file_path = os.path.join(script_dir, 'real_flight.json')
+    json_file_path = os.path.join(script_dir, demo_file)
 
     # Call the visualiser. Experiment with the following:
     # TODO change the history_length
@@ -17,4 +17,4 @@ if __name__ == "__main__":
     # TODO change the interval (in milliseconds) to change the time between frames
     # NOTE there will be a lower bound for the interval below which the animation won't run any faster
     # depending on your system 
-    visualise3D(json_file_path, history_length=400, show_sheets=False, interval=1)
+    visualise3D(json_file_path, history_length=100, show_sheets=True, interval=1)
