@@ -11,16 +11,56 @@ from matplotlib.axes import Axes
 # Import slider package
 from matplotlib.widgets import Slider, Button
 from matplotlib.lines import Line2D
-
-from pgflow.vehicle import Vehicle
-from pgflow.cases import Case
-
+from ...utils.json_utils import load_from_json
+# from pgflow.vehicle import Vehicle
+# from pgflow.cases import Case
+from dataclasses import dataclass
+from typing import Optional
 
 
 ############################################################################################################################################################
 ############################################################################################################################################################
 ############################################################################################################################################################
 ############################################################################################################################################################
+
+'''These classes mimick the format of the pgflow Vehicle, Building, Arena and Case classes.
+This was done to use this visualisation by loading a json file without rewriting it  completely'''
+class Vehicle:
+    def __init__(self, path:list, desired_vectors: Optional[list] = None) -> None:
+        self.path = np.array(path)
+        self.goal = self.path[-1]
+        self.desired_vectors = desired_vectors
+
+# @dataclass
+class Building:
+    def __init__(self, vertices:list) -> None:
+        self.vertices = np.array(vertices)
+
+class Arena:
+    def __init__(self, buildings:list[Building]) -> None:
+        self.buildings=buildings
+
+class Case:
+    arrival_distance = 0.2
+    collision_threshold = 0.5
+    max_connection_distance = 0
+    def __init__(self, json_filename:str) -> None:
+        case_contents = load_from_json(json_filename)
+        self.vehicle_list = self.get_vehicles(case_contents)
+        self.arena = self.get_arena(case_contents)
+
+    def get_vehicles(self, file_contents:dict)->list[Vehicle]:
+        vehicles_json:list[dict] = file_contents.get("vehicles")
+        vehicle_list = [Vehicle(v['path'], v.get('desired_vectors')) for v in vehicles_json]
+        return vehicle_list
+        
+    def get_arena(self, file_contents:dict)->Arena:
+        buildings_json:list[dict] = file_contents.get("buildings")
+        buildings = [Building(b['vertices']) for b in buildings_json]
+        arena = Arena(buildings)
+        return arena
+
+
 
 
 class PlotTrajectories:
@@ -37,7 +77,10 @@ class PlotTrajectories:
     BUILDING_INFLATED_EDGE_COLOUR = "b"
     BUILDING_INFLATED_FILL_COLOUR = "k"
 
-    def __init__(self, case: Case, update_every: int):
+    def __init__(self, file_name: str, collision_threshold:Optional[float] = 0.5, max_connection_distance:Optional[float] = 0, update_every: Optional[int] = 1):
+        case = Case(file_name)
+        case.max_connection_distance = max_connection_distance
+        case.collision_threshold = collision_threshold
         self.case = case
         self.Arena = case.arena
         self.ArenaR = case.arena
@@ -46,7 +89,7 @@ class PlotTrajectories:
         self.modified_artists: set = set()
 
         self.vehicle_list = case.vehicle_list
-        self.case_name = case.name
+        # self.case_name = case.name
         self.update_every = update_every
         # plt.close('all')
         self.fig, self.ax = self.plot_setup()
@@ -290,10 +333,9 @@ class PlotTrajectories:
             ax.add_artist(warning_circle)
             # print(vehicle.ID,vehicle.desired_vectors)
 
-            gflow_output_arrow = ax.arrow(x, y, *vehicle.desired_vectors[0], width=0.5)
-
-            # ax.add_artist(gflow_output_arrow)
-            self.arrows.append(gflow_output_arrow)
+            if vehicle.desired_vectors:
+                gflow_output_arrow = ax.arrow(x, y, *vehicle.desired_vectors[0], width=0.5)
+                self.arrows.append(gflow_output_arrow)
 
             self.warning_circles.append(warning_circle)
 
@@ -326,12 +368,15 @@ class PlotTrajectories:
                 x, y, z = self.vehicle_list[i].path[plot_until - 1, :3]
             else:
                 x, y, z = self.vehicle_list[i].path[-1, :3]
-            self.drone_list[i].set_data(x, y)
+            self.drone_list[i].set_data([x], [y])
             # self.modified_artists.add(self.drone_list[i])
             self.positions[i] = [x, y, z]
 
     def update_arrows(self, plot_until):
         for i in range(len(self.drone_list)):
+            if not self.vehicle_list[i].desired_vectors:
+                #no arrows to plot
+                continue
             if plot_until == 0:
                 x, y, z = self.vehicle_list[i].path[0, :3]
             elif plot_until < len(self.vehicle_list[i].path[:, 0]):
@@ -345,6 +390,7 @@ class PlotTrajectories:
             except IndexError:
                 [dx, dy] = self.vehicle_list[i].desired_vectors[-1]
                 self.arrows[i].set_visible(False)
+            
             self.arrows[i].set_data(x=x, y=y, dx=dx, dy=dy, width=0.1)
             
 
@@ -417,7 +463,7 @@ class PlotTrajectories:
                 if self.has_reached_goal(j):
                     continue
 
-                if distance_matrix[i, j] < self.case.max_avoidance_distance:
+                if distance_matrix[i, j] < self.case.max_connection_distance:
                     x_values = [
                         self.vehicle_list[i].path[plot_until, 0],
                         self.vehicle_list[j].path[plot_until, 0],
@@ -427,7 +473,7 @@ class PlotTrajectories:
                         self.vehicle_list[j].path[plot_until, 1],
                     ]
                     distance = distance_matrix[i, j]
-                    max_distance = self.case.max_avoidance_distance
+                    max_distance = self.case.max_connection_distance
                     p = (
                         1 - distance / max_distance
                     )  # 1 at no distance, 0 and max_distance
