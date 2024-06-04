@@ -20,13 +20,14 @@ from pgflow.utils.simulation_utils import step_simulation, set_new_attribute
 
 
 # Create a PyBullet simulation environment
-# p.connect(p.GUI)
+
+# at the moment, only convex buildings are supported for plotting
 
 
 
 ArenaMap.size = 0.1
 ArenaMap.inflation_radius = 0.2
-filename = 'more_buildings.json'
+filename = 'voliere.json'
 case = Cases.get_case(filename, 'scenebuilder')
 # Load polygons from the text file
 with open(filename, "r") as f:
@@ -35,8 +36,9 @@ with open(filename, "r") as f:
 
 num_drones = len(case.vehicle_list)
 case.mode = 'fancy'
+case.building_detection_threshold = 1.5
 set_new_attribute(case, 'source_strength', 3)
-target_speed = 1.0
+target_speed = 0.5
 set_new_attribute(case, 'max_speed', target_speed)
 
 if __name__ == "__main__":
