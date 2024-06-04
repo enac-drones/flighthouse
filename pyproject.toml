@@ -16,6 +16,7 @@ pandas = "^2.2.2"
 scenebuilder = "^0.2.0"
 plotly = "^5.22.0"
 dronesim = {path = "/Users/adriandelser/Desktop/ENAC/dronesim"}
+pgflow = {path = "/Users/adriandelser/Desktop/ENAC/PGFlow"}
 
 
 

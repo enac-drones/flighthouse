@@ -7,7 +7,7 @@ script_dir = os.path.dirname(os.path.abspath(__file__))
 
 
 if __name__ == "__main__":
-    demo_file = 'pybullet_output1.json'
+    demo_file = 'pybullet_output2.json'
     # Construct the path to the JSON file
     json_file_path = os.path.join(script_dir, demo_file)
 

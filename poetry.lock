@@ -515,18 +515,20 @@ version = "0.2.9"
 description = "Artificial potential field based guidance algorithm for multi agent systems"
 optional = false
 python-versions = ">=3.11"
-files = [
-    {file = "pgflow-0.2.9-py3-none-any.whl", hash = "sha256:e69a6b17b8a0f620b01050ec7fdbba6ce6944e91bcb99e21249e0be02f27cc4e"},
-    {file = "pgflow-0.2.9.tar.gz", hash = "sha256:cd438fb7003c9ce1a6af7ee04d2b3f579bf54e908656a06e02d407d70c676e04"},
-]
+files = []
+develop = false
 
 [package.dependencies]
-matplotlib = ">=3.7.1,<4.0.0"
-numpy = ">=1.24.3,<2.0.0"
-pyclipper = ">=1.3.0.post4,<2.0.0"
-rtree = ">=1.1.0,<2.0.0"
-scipy = ">=1.10.1,<2.0.0"
-shapely = ">=2.0.1,<3.0.0"
+matplotlib = "^3.7.1"
+numpy = "^1.24.3"
+pyclipper = "^1.3.0.post4"
+rtree = "^1.1.0"
+scipy = "^1.10.1"
+shapely = "^2.0.1"
+
+[package.source]
+type = "directory"
+url = "../PGFlow"
 
 [[package]]
 name = "pillow"
@@ -910,4 +912,4 @@ files = [
 [metadata]
 lock-version = "2.0"
 python-versions = "^3.11"
-content-hash = "489742e8b7e4f31d5b39edf223ce0829d483abb5f6bb46bad240ddf665b7a9de"
+content-hash = "c9022dae9f127b7afc43cd75ae2e42fa51513b11889a565bd1fad6080994e8ca"

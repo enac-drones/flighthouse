@@ -25,10 +25,19 @@ from pgflow.utils.simulation_utils import step_simulation, set_new_attribute
 
 
 ArenaMap.size = 0.1
-case = Cases.get_case('building_12.json', 'scenebuilder')
+ArenaMap.inflation_radius = 0.2
+filename = 'more_buildings.json'
+case = Cases.get_case(filename, 'scenebuilder')
+# Load polygons from the text file
+with open(filename, "r") as f:
+    # Load the JSON data
+    data = json.load(f)
+
 num_drones = len(case.vehicle_list)
-case.mode = ''
+case.mode = 'fancy'
 set_new_attribute(case, 'source_strength', 3)
+target_speed = 1.0
+set_new_attribute(case, 'max_speed', target_speed)
 
 if __name__ == "__main__":
 
@@ -185,10 +194,7 @@ if __name__ == "__main__":
     #### Obtain the PyBullet Client ID from the environment ####
     PYB_CLIENT = env.getPyBulletClient()
 
-    # Load polygons from the text file
-    with open("./building_12.json", "r") as f:
-        # Load the JSON data
-        data = json.load(f)
+    
 
     polygons = []
     obstacles = data["scenebuilder"]["buildings"]
@@ -196,10 +202,9 @@ if __name__ == "__main__":
         floor = np.array(obs["vertices"]).copy() 
         floor[:,2] = 0.0
         ceil = np.array(obs["vertices"]).copy() 
-        ceil[:,2] = 3.0
+        # ceil[:,2] = 3.0
         
         tmp = np.vstack((floor, ceil))
-        print(tmp)
         polygons.append(tmp)
 
     # Create polygons in the simulation
@@ -253,7 +258,7 @@ if __name__ == "__main__":
                         control_timestep=CTRL_EVERY_N_STEPS * env.TIMESTEP,
                         state=obs[str(j)]["state"],
                         target_pos = np.hstack([obs[str(j)]["state"][:2], 0.5]),
-                        target_vel=desired_vector*0.6,
+                        target_vel=desired_vector*target_speed,
                         # target_acc=np.zeros(3),
                         # target_rpy=np.zeros(3),
                         # target_rpy_rates=np.zeros(3),
