@@ -1,13 +1,17 @@
 """Script demonstrating the dronesim integration
+NOTE SEE README FOR ADDITIONAL DEPENDANCIES
+
+to run: navigate to this directory
+python3 dronesim_example.py
 """
 import argparse
 import time
 
-import matplotlib.pyplot as plt
+# import matplotlib.pyplot as plt
 import numpy as np
 import pybullet as p
 import json
-from scipy.spatial import ConvexHull
+# from scipy.spatial import ConvexHull
 from dronesim.control.INDIControl import INDIControl
 from dronesim.envs.BaseAviary import DroneModel, Physics
 from dronesim.envs.CtrlAviary import CtrlAviary
@@ -19,15 +23,14 @@ from pgflow.arena import ArenaMap
 from pgflow.utils.simulation_utils import step_simulation, set_new_attribute
 
 
-# Create a PyBullet simulation environment
 
 # at the moment, only convex buildings are supported for plotting
 
 
 
+filename = 'voliere.json'
 ArenaMap.size = 0.1
 ArenaMap.inflation_radius = 0.2
-filename = 'voliere.json'
 case = Cases.get_case(filename, 'scenebuilder')
 # Load polygons from the text file
 with open(filename, "r") as f:
