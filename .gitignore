@@ -1,3 +1,6 @@
+#json in main directory
+./*.json
+
 ICUAS_presentation/
 .DS_Store
 # Byte-compiled / optimized / DLL files
