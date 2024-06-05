@@ -17,4 +17,4 @@ if __name__ == "__main__":
     # TODO change the interval (in milliseconds) to change the time between frames
     # NOTE there will be a lower bound for the interval below which the animation won't run any faster
     # depending on your system 
-    visualise3D(json_file_path, history_length=100, show_sheets=True, interval=1)
+    visualise3D(json_file_path, history_length=200, show_sheets=True, interval=1)

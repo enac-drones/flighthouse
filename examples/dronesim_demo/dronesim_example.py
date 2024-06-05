@@ -26,9 +26,7 @@ from pgflow.utils.simulation_utils import step_simulation, set_new_attribute
 
 # at the moment, only convex buildings are supported for plotting
 
-
-
-filename = 'voliere.json'
+filename = 'voliere1.json' #case name from scenebuilder
 ArenaMap.size = 0.1
 ArenaMap.inflation_radius = 0.2
 case = Cases.get_case(filename, 'scenebuilder')
@@ -41,7 +39,7 @@ num_drones = len(case.vehicle_list)
 case.mode = 'fancy'
 case.building_detection_threshold = 1.5
 set_new_attribute(case, 'source_strength', 3)
-target_speed = 0.5
+target_speed = 0.7
 set_new_attribute(case, 'max_speed', target_speed)
 
 if __name__ == "__main__":
@@ -218,11 +216,7 @@ if __name__ == "__main__":
         p.createMultiBody(baseCollisionShapeIndex=polygon_id)
 
 
-    #### Initialize the logger #################################
-    logger = Logger(
-        logging_freq_hz=int(ARGS.simulation_freq_hz / AGGR_PHY_STEPS),
-        num_drones=num_drones,
-    )
+  
 
     #### Initialize the controllers ############################
     ctrl = [INDIControl(drone_model=drone) for drone in ARGS.drone]
@@ -258,7 +252,7 @@ if __name__ == "__main__":
                     desired_vector = np.hstack([desired_vector, 0])
 
                
-                
+                ##### NOTE HERE IS WHERE YOU WOULD PUT YOUR TARGET VELOCITY FOR THE DRONES TO FOLLOW
                 action[str(j)], _, _ = ctrl[j].computeControlFromState(
                         control_timestep=CTRL_EVERY_N_STEPS * env.TIMESTEP,
                         state=obs[str(j)]["state"],
@@ -277,16 +271,8 @@ if __name__ == "__main__":
         if ARGS.gui:
             sync(i, START, env.TIMESTEP)
 
-        ### Break the simulation if we are close to ground
-        # if z < 0.3:
-        #     break
-    #### Close the environment #################################
+           #### Close the environment #################################
     env.close()
     case.to_dict('pybullet_output.json')
 
-    #### Save the simulation results ###########################
-    # logger.save()
-
-    #### Plot the simulation results ###########################
-    # if ARGS.plot:
-    #     logger.plot()
+ 
