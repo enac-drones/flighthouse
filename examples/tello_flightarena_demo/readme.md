@@ -1,4 +1,5 @@
-# Work In Progress ! Example to use Tello quadrotors inside ENAC's Indoor Flight Arena
+# Work In Progress !
+# Example to use Tello quadrotors inside ENAC's Indoor Flight Arena
 
 Obtain PGFlow guidance library :
 
