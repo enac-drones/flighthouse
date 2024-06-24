@@ -4,11 +4,12 @@ from flighthouse import SimulationVisualizer, visualise3D
 from flighthouse import SceneBuilder
 
 
+
 ''' 
 The two lines below open the SceneBuilder GUI. Once you are finished drawing your
 scene, save it in DEFAULT JSON format and close the GUI. PGFLow does not support GeoJSON
-Make sure to use the default file name: scenebuilder.json
-Save it to the directory containing this example
+Make sure to use the default file name: 'scenebuilder.json'
+Save it to the json_scenebuilder_files directory or anywhere else python can access it
 '''
 # Open the SceneBuilder GUI
 p = SceneBuilder()

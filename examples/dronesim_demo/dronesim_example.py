@@ -26,9 +26,9 @@ from pgflow.utils.simulation_utils import step_simulation, set_new_attribute
 
 # at the moment, only convex buildings are supported for plotting
 
-filename = 'voliere1.json' #case name from scenebuilder
+filename = 'voliere2.json' #case name from scenebuilder
 ArenaMap.size = 0.1
-ArenaMap.inflation_radius = 0.2
+ArenaMap.inflation_radius = 0.1
 case = Cases.get_case(filename, 'scenebuilder')
 # Load polygons from the text file
 with open(filename, "r") as f:
@@ -36,10 +36,12 @@ with open(filename, "r") as f:
     data = json.load(f)
 
 num_drones = len(case.vehicle_list)
-case.mode = 'fancy'
+case.mode = 'dynamics'
 case.building_detection_threshold = 1.5
 set_new_attribute(case, 'source_strength', 3)
-target_speed = 0.7
+set_new_attribute(case, 'imag_source_strength', 5)
+
+target_speed = 0.5
 set_new_attribute(case, 'max_speed', target_speed)
 
 if __name__ == "__main__":
@@ -246,6 +248,7 @@ if __name__ == "__main__":
 
                 vehicle = case.vehicle_list[j]
                 if vehicle.state==1:
+                    #Drone has arrived, send landing command
                     desired_vector = np.array([0,0,-1])
                 else:
                     desired_vector = vehicle.desired_vectors[-1]
@@ -259,7 +262,7 @@ if __name__ == "__main__":
                         target_pos = np.hstack([obs[str(j)]["state"][:2], 0.5]),
                         target_vel=desired_vector*target_speed,
                         # target_acc=np.zeros(3),
-                        # target_rpy=np.zeros(3),
+                        target_rpy=np.array([0,0,np.arctan2(desired_vector[1], desired_vector[0])]),
                         # target_rpy_rates=np.zeros(3),
                     )
          
